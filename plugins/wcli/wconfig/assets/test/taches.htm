@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Présentation de vos projets</title>
+
+    <link rel="stylesheet" href="../css/simple_grid/simple-table.css">
+</head>
+
+<body>
+    <div class="container ma-0">
+        <div class="bg-gl">
+            <div class="text-center bg-p px-1">
+                <h1 class=""><span class="small">Etat des <u>taches</u> du projet : </span><br>{{project.name}}</h1>
+
+            </div>
+            <div class="table bg-gl">
+                <div class="tb-row ">
+                    <div class="cel-6 border-pr px-1">
+                        <p class="full">Nom du client : <span class="font-heavy">{{project.client.name}}</span></p>
+                        <p>Contact : <span class="font-heavy">{{project.contact.completeName}}</span></p>
+                        <p>CP : <span class="font-heavy">{{project.cp.first_name}} {{project.cp.last_name}}</span></p>
+                    </div>
+                    <div class="cel-6 px-1">
+                        <p class="full">Total des taches : <span class="font-heavy">{{project.allTasks}}</span></p>
+                        <p>taches en cours <span class="font-heavy">{{project.runningTasks}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="pt-1">Taches en cours ou programmée</h2>
+        <div class="break-after">
+            {%for row in FNC.taches_running%}
+            <div class="col-12 keep-together mb-1">
+                <div class="bg-gl pa-1" style="">
+                    <h3> Tache : {{row.name}}</h3>
+                    <ul style="padding-bottom:0">
+                        <li>Etats : <strong>{{row.task_state.name}}</strong></li>
+                        <li>Type : <strong>{{row.task_type.name}}</strong></li>
+                        <li>Commence le : <strong>{{row.start_at|localeDate()}}</strong></li>
+                        <li>Echéance : <strong>{{row.next_at|localeDate()}}</strong></li>
+                    </ul>
+                    <h5>Description : </h5>
+                    <p class="small">{{row.description | nl2br}}</p>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <h2 class="pt-1">Taches terminés</h2>
+        <div class="break-after">
+            {%for row in FNC.taches_closed%}
+            <div class="col-12 keep-together mb-1">
+                <div class="bg-gl pa-1" style="">
+                    <h3> Tache : {{row.name}}</h3>
+                    <ul style="padding-bottom:0">
+                        <li>Type : <strong>{{row.task_type.name}}</strong></li>
+                        <li>Terminé le : <strong>{{row.closed_at|localeDate()}}</strong></li>
+                    </ul>
+                    <h5>Description : </h5>
+                    <p class="small">{{row.description | nl2br}}</p>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</body>
+
+</html>

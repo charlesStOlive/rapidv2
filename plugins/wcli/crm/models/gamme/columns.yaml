@@ -1,0 +1,23 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        invisible: true
+
+    name:
+        label: wcli.crm::gamme.name
+        searchable: true
+    slug:
+        label: wcli.crm::gamme.slug
+        searchable: true
+    nbSalesMontant:
+        label: wcli.crm::gamme.nbSalesMontant
+        searchable: false
+        sortable: false
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: timetense

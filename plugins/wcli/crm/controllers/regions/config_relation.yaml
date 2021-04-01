@@ -1,0 +1,31 @@
+# ===================================
+# Relation Behavior Config
+# ===================================
+
+clients:
+    label: wcli.crm::region.clients
+    manage:
+        form: $/wcli/crm/models/client/fields_for_region.yaml
+    view:
+        list: $/wcli/crm/models/client//columns_for_region.yaml
+        recordUrl: wcli/crm/clients/update/:id
+        filter: config_filter_client.yaml
+        showSearch: true
+        recordsPerPage: 20
+        toolbarButtons: false
+        defaultSort:
+            column: name
+            direction: asc
+aggs:
+    label: wcli.crm::region.aggs
+    manage:
+        form: $/wcli/crm/models/agg/fields_for_region.yaml
+    view:
+        list: $/wcli/crm/models/agg//columns_for_region.yaml
+        recordUrl: wcli/crm/aggs/update/:id
+        recordsPerPage: 20
+        toolbarButtons: false
+        defaultSort:
+            column: name
+            direction: asc
+

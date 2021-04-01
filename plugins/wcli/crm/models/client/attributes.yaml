@@ -1,0 +1,23 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+icon: icon-building
+attributes:
+    name:
+        label: wcli.crm::client.name
+    siret:
+        label: wcli.crm::client.siret
+    email:
+        label: wcli.crm::client.email
+    address:
+        label: wcli.crm::client.address
+    cp:
+        label: wcli.crm::client.cp
+    city:
+        label: wcli.crm::client.city
+    tel:
+        label: wcli.crm::client.tel
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: date-medium

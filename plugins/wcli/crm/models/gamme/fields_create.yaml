@@ -1,0 +1,18 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: wcli.crm::gamme.name
+        span: left
+        required: true
+    slug:
+        label: wcli.crm::gamme.slug
+        span: right
+        required: true
+        preset: name
+    description:
+        label: wcli.crm::gamme.description
+        span: full
+        type: markdown

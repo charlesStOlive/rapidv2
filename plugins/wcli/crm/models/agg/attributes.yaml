@@ -1,0 +1,38 @@
+icon: icon-money
+attributes:
+        s_y:
+            label: wcli.crm::region.s_y
+            type: euro-int
+        s_y_1:
+            label: wcli.crm::region.s_y_1
+            type: euro-int
+        c_y:
+            label: wcli.crm::region.c_y
+            type: int
+        c_y_1:
+            label: wcli.crm::region.c_y_1
+            type: int
+        s_q:
+            label: wcli.crm::region.s_q
+            type: euro-int
+        s_q_1:
+            label: wcli.crm::region.s_q_1
+            type: euro-int
+        s_q_n_1:
+            label: wcli.crm::region.s_q_n_1
+            type: euro-int
+        s_q_1_n_1:
+            label: wcli.crm::region.s_q_1_n_1
+            type: euro-int
+        s_m:
+            label: wcli.crm::region.s_m
+            type: euro-int
+        s_m_1:
+            label: wcli.crm::region.s_m_1
+            type: euro-int
+        s_m_n_1:
+            label: wcli.crm::region.s_m_n_1
+            type: euro-int
+        s_m_1_n_1:
+            label: wcli.crm::region.s_m_1_n_1
+            type: euro-int

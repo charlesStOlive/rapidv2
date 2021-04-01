@@ -1,0 +1,27 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: wcli.crm::sale.name
+        span: left
+        required: true
+    client:
+        label: wcli.crm::sale.client
+        span: left
+        type: relation
+        placeholder: waka.utils::lang.global.placeholder
+        nameFrom: name
+    gamme:
+        label: wcli.crm::sale.gamme
+        span: left
+        type: relation
+        placeholder: waka.utils::lang.global.placeholder
+        nameFrom: name
+    sale_at:
+        label: wcli.crm::sale.sale_at
+        span: left
+        type: datepicker
+        mode: date
+        ignoreTimezone: true

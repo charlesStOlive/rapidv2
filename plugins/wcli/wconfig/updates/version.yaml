@@ -1,0 +1,4 @@
+1.0.1: First version of Wconfig
+1.0.2:
+  - 'creaation du fichier uniqueable'
+  - create_uniqueables_table.php

@@ -1,0 +1,162 @@
+
+chooseSetAggTab:
+    name: "Tableau : Choisissez un set d'aggrégation :  Volume ET CA "
+    attributes: 
+        _tab:
+            label: Option d'agrégation
+            type: section
+        type: 
+            label: Type d'aggregation
+            type: dropdown
+            required: true
+            default: quarter
+            options: 
+                year: Année
+                quarter: Trimestre
+                month: Mois
+        qty:
+            label: Combien d'aggrégation doit on afficher
+            comment: Exemple pour des mois 12 affichera les 12 derniers mois, pour des années 2 affichera les 2 dernières années 
+            default: 6
+    outputs:
+        values:
+            name:
+                label: Nom du Set
+            count: 
+                label: Nb valeur
+            sum:
+                label: Montant
+                type: euro-int
+chooseOneSetAgg: 
+    name: "Graphique : Choisissez un set d'aggrégation :  Volume OU CA"
+    attributes: 
+        extend: chooseSetAggTab
+        calcul: 
+            label: Type de calcul
+            type: dropdown
+            required: true
+            default: montant
+            options: 
+                sum: CA
+                count: Volume
+        _charrt:
+            label: Option pour le graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            options: 
+                bar: Bar
+                line: Ligne
+        beginAtZero: config::waka.charter::fnc_fields.beginAtZero 
+        color: config::waka.charter::fnc_fields.color 
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+chooseTwoSetAgg: 
+    name: "Graphique :Choisissez un set d'aggrégation :  Volume ET CA "
+    attributes: 
+        _tab:
+            label: Option d'agrégation
+            type: section
+        type: 
+            label: Type d'aggregation
+            type: dropdown
+            required: true
+            default: quarter
+            options: 
+                year: Année
+                quarter: Trimestre
+                month: Mois
+        chart:
+            label: Option du graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            default: bar
+            options: 
+                bar: Bar
+                line: Ligne
+        qty:
+            label: Combien d'aggrégation doit on afficher
+            comment: Exemple pour des mois 12 affichera les 12 derniers mois, pour des années 2 affichera les 2 dernières années 
+            default: 6
+        beginAtZero: config::waka.charter::fnc_fields.beginAtZero 
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+
+
+graphGammes:
+    name: "Répartition des ventes par gammes"
+    attributes: 
+        tab:
+            label: Option d'agrégation
+            type: section
+        periode: fnc::getPeriode
+        chart:
+            label: Option du graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            default: pie
+            options: 
+                doughnut: Doughnut
+                pie: Pie
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+        group:
+            label: Regroupement de petites valeurs
+            type: section
+        nb: 
+            label: Nombre de gamme avant regroupement
+            span: auto
+        seuil:
+            label: % avant regroupement
+            span: auto
+            default: 4
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+
+listeDesVentes: 
+    name: Liste des ventes
+    attributes: 
+        sale_at: 
+            label: "Lister les ventes depuis"
+            type: datepicker
+            mode: date
+            ignoreTimezone: true
+    outputs: 
+        values: 
+            # gamme.name: Nom de la gamme
+            name:
+                label: Nom
+            montant: 
+                label: Montant
+                type: euro
+            gamme.name:
+                label: Gamme
+            sale_at: 
+                label: Date de vente
+                type: date
+
+   

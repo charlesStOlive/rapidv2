@@ -1,0 +1,108 @@
+missionsByPeriod:
+    name: Liste des missions du projet par periode
+    attributes:
+        periods:
+            label: Choisissez une ou plusieurs periodes
+            type: taglist
+            options: list::\Waka\Crm\Models\Period
+            useKey: true
+    outputs:
+        attributes: 
+            main: waka/crm/models/mission/attributes.yaml
+            
+workflows:
+    name: Liste des Workflow du project
+    attributes:
+        width: config::waka.utils::ImageOptions.width 
+        height: config::waka.utils::ImageOptions.height
+        crop: config::waka.utils::ImageOptions.crop
+        gravity: config::waka.utils::ImageOptions.gravity
+    outputs:
+        attributes: 
+            main: waka/crm/models/createwf/attributes.yaml
+        values:
+            imagetd: 
+                label: Image portrait
+                type: image  
+            imagelr: 
+                label: Image paysage
+                type: image  
+            
+                
+            
+solutionsFiltered:
+    name: Liste des solutions
+    attributes:
+        solutions:
+            label: Choisissez une ou plusieurs solutions
+            type: taglist
+            options: list::Waka\Wcms\Models\Solution
+            useKey: true
+        
+        width: config::waka.cloudis::ImageOptions.width 
+        height: config::waka.cloudis::ImageOptions.height
+        crop: config::waka.cloudis::ImageOptions.crop
+        gravity: config::waka.cloudis::ImageOptions.gravity
+    outputs:
+        models:
+            - fnc::getSolution
+        images:
+            - main_image
+                    
+                
+            
+
+allContacts:
+    name: Tous les contacts du projet
+    outputs:
+        attributes: 
+            main: waka/crm/models/contact/attributes.yaml
+          
+variantes:
+    name: Afficher les variantes
+    outputs:
+        attributes: 
+            main: waka/crm/models/variante/attributes.yaml
+        values:
+            newTotal: 
+                label: Nouveau total
+                type: euro
+            newMensualite: 
+                label: Nouvelles menusalités
+                type: euro
+                          
+tasks:
+    name: Toutes les taches actives OU fermées par date
+    attributes:
+        task_state:
+            label: Etat des taches
+            type: taglist
+            useKey: true
+            options: list::Waka\Crm\Models\TaskState
+        
+        task_type:
+            label: Type de taches
+            type: taglist
+            useKey: true
+            options: list::Waka\Crm\Models\TaskType
+        
+        start_date:
+            label: Date de debut
+            type: datepicker
+            mode: date
+            span: left
+        
+        end_date:
+            label: date de fin
+            type: datepicker
+            mode: date
+            span: right
+    outputs:
+        values:
+            name: nom de la tache
+            created_at: date de création
+            next_at: fin étape suivante
+            closed_at: Fermé le
+            task_state.name: Nom de létat
+            task_type.name: Type de tache
+    

@@ -1,0 +1,193 @@
+
+chooseSetAggTab:
+    name: "Tableau : Choisissez un set d'aggrégation :  Volume ET CA "
+    attributes: 
+        _tab:
+            label: Option d'agrégation
+            type: section
+        type: 
+            label: Type d'aggregation
+            type: dropdown
+            required: true
+            default: quarter
+            options: 
+                year: Année
+                quarter: Trimestre
+                month: Mois
+        qty:
+            label: Combien d'aggrégation doit on afficher
+            comment: Exemple pour des mois 12 affichera les 12 derniers mois, pour des années 2 affichera les 2 dernières années 
+            default: 6
+    outputs:
+        values:
+            name:
+                label: Nom du Set
+            count: 
+                label: Nb valeur
+            sum:
+                label: Montant
+                type: euro-int
+chooseOneSetAgg: 
+    name: "Graphique : Choisissez un set d'aggrégation :  Volume OU CA"
+    attributes: 
+        extend: chooseSetAggTab
+        calcul: 
+            label: Type de calcul
+            type: dropdown
+            required: true
+            default: montant
+            options: 
+                sum: CA
+                count: Volume
+        _charrt:
+            label: Option pour le graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            options: 
+                bar: Bar
+                line: Ligne
+        beginAtZero: config::waka.charter::fnc_fields.beginAtZero 
+        color: config::waka.charter::fnc_fields.color 
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+chooseTwoSetAgg: 
+    name: "Graphique :Choisissez un set d'aggrégation :  Volume ET CA "
+    attributes: 
+        _tab:
+            label: Option d'agrégation
+            type: section
+        type: 
+            label: Type d'aggregation
+            type: dropdown
+            required: true
+            default: quarter
+            options: 
+                year: Année
+                quarter: Trimestre
+                month: Mois
+        chart:
+            label: Option du graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            default: bar
+            options: 
+                bar: Bar
+                line: Ligne
+        qty:
+            label: Combien d'aggrégation doit on afficher
+            comment: Exemple pour des mois 12 affichera les 12 derniers mois, pour des années 2 affichera les 2 dernières années 
+            default: 6
+        beginAtZero: config::waka.charter::fnc_fields.beginAtZero 
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+graphGammes:
+    name: "Répartition des ventes par gammes"
+    attributes: 
+        tab:
+            label: Option d'agrégation
+            type: section
+        periode: fnc::getPeriode
+        chart:
+            label: Option du graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            default: pie
+            options: 
+                doughnut: Doughnut
+                pie: Pie
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+        group:
+            label: Regroupement de petites valeurs
+            type: section
+        nb: 
+            label: Nombre de gamme avant regroupement
+            span: auto
+        seuil:
+            label: % avant regroupement
+            span: auto
+            default: 4
+    outputs: 
+        values: 
+            chart:
+                label: graphique
+                type: image
+
+
+topClient:
+    name: Lister un top client
+    attributes:
+        qty:
+            label: Nombre de client à afficher dans le top
+            default: 10
+        periode: fnc::getPeriodeRegionAgg
+    outputs: 
+        values: 
+            name:
+                label: nom du client
+        attributes:
+            main: waka/crm/models/agg/attributes_region.yaml
+
+periodeGraph:
+    name: Période éditable
+    attributes:
+        tab:
+            label: Option d'agrégation
+            type: section
+        type: fnc::getPeriodeType
+        start_at: 
+            label: Reculer de X période pour la date de debut
+            comment: "ex: 4 sur période Mois = mois en cours - 4 mois,  13 = mois en cours de l'année prescedente "
+        end_at: 
+            label: Reculer de X période pour la date de fin
+            comment: "ex: 1 sur période Mois = mois prescedent, 0 = mois prescedent"
+        calcul: 
+            label: Type de calcul
+            type: dropdown
+            required: true
+            default: montant
+            options: 
+                sum: CA
+                count: Volume
+        _charrt:
+            label: Option pour le graphique
+            type: section
+        chartType: 
+            label: Type de graphique
+            type: dropdown
+            required: true
+            default: pie
+            options: 
+                bar: Bar
+                line: Ligne
+        beginAtZero: config::waka.charter::fnc_fields.beginAtZero 
+        color: config::waka.charter::fnc_fields.color 
+        width: config::waka.charter::fnc_fields.width 
+        height: config::waka.charter::fnc_fields.height 
+    outputs:
+        values: 
+            chart:
+                label: graphique
+                type: image
+            

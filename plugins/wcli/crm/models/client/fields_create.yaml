@@ -1,0 +1,18 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: wcli.crm::client.name
+        span: left
+        required: true
+    address:
+        label: wcli.crm::client.address
+        span: left
+    cp:
+        label: wcli.crm::client.cp
+        span: right
+    city:
+        label: wcli.crm::client.city
+        span: left

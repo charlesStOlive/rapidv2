@@ -1,0 +1,178 @@
+# ===================================
+#  Config des data source
+
+##Les champs suivant sont obligatoire
+# id
+# test_id
+# name
+# class
+# controller
+#CONFIG COMPLETE EXEMPLE en base de page
+
+# ===================================
+
+client:
+    label: Client
+    code: client
+    test_id: 9
+    author: Waka
+    plugin: Crm
+    name : Client
+    class: Waka\Crm\Models\Client
+    controller: waka/crm/clients
+    editFunctions: Wcli\Wconfig\Functions\Client
+    attributes: waka/crm/models/client/attributes.yaml
+    emails:
+        to: 
+            key: email
+            relation: contacts
+        cc: 
+            key: email
+            relation: contacts
+    relations:
+        sector:
+            images: true
+            label: Secteur
+            attributes: waka/crm/models/sector/attributes.yaml
+    # otherRelations:
+    #         info:
+    #             class: Waka\Crm\Models\Info
+    #             label: Info
+contact:
+    label: Contact
+    code : contact
+    test_id: 48
+    author: Waka
+    plugin: Crm
+    name : Contact
+    class: Waka\Crm\Models\Contact
+    controller: waka/crm/contacts
+    editFunctions: Wcli\Wconfig\Functions\Contact
+    attributes: waka/crm/models/contact/attributes.yaml
+    emails:
+        to: 
+            key: email
+        cc: 
+            key: email
+            relation: client.contacts
+    relations:
+        client: 
+            label: Client
+            images: true
+            attributes: waka/crm/models/client/attributes.yaml
+        client.sector: 
+            label: Client
+            attributes: waka/crm/models/sector/attributes.yaml
+    # otherRelations:
+    #         info:
+    #             class: Waka\Crm\Models\Info
+    #             label: Info
+
+project:
+    label: Projet
+    code: project
+    test_id: 16
+    author: Waka
+    plugin: Crm
+    name: Project
+    class: Waka\Crm\Models\Project
+    controller: waka/crm/projects
+    editFunctions: Wcli\Wconfig\Functions\Project
+    attributes: waka/crm/models/project/attributes.yaml
+    emails:
+        to: 
+            key: email
+            relation: contact
+        cc: 
+            key: email
+            relation: client.contacts
+    relations:
+        client: 
+            images: true
+            label: Client
+            attributes: waka/crm/models/client/attributes.yaml
+        client.sector: 
+            label: Secteur
+            attributes: waka/crm/models/sector/attributes.yaml
+        contact:
+            label: Contact principale
+            attributes: waka/crm/models/contact/attributes.yaml
+    # otherRelations:
+    #         info:
+    #             class: Waka\Crm\Models\Info
+    #             label: Info
+utilisateur: 
+    label: Utilisateurs
+    code: user
+    test_id: 1
+    author: Waka
+    plugin: Crm
+    name: wakauser
+    class: Waka\Crm\Models\WakaUser
+    controller: waka/crm/wakausers
+    editFunctions: Wcli\Wconfig\Functions\User
+
+sector: 
+    label: Secteur
+    code: sector
+    test_id: 1
+    author: Waka
+    plugin: Crm
+    name: Sector
+    class: Waka\Crm\Models\Sector
+    controller: waka/crm/sectors
+
+task:
+    label: Tâches
+    code: task
+    test_id: 1
+    author: Waka
+    plugin: Tasker
+    name: Task
+    class: Waka\Tasker\Models\Task
+    controller: waka/tasker/tasks
+    attributes: waka/crm/models/project/attributes.yaml
+    # emails:
+    #     to: 
+    #         key: email
+    #         relation: contact
+    #     cc: 
+    #         key: email
+    #         relation: client.contacts
+    # relations:
+    #     task_type:
+    #         label: type
+
+
+# ===================================
+#  CONFIG COMPLETE EXEMPLE
+
+# test:
+#     id: 2
+#     test_id: 9
+#     author: Waka
+#     plugin: Crm
+#     name : Client
+#     class: Waka\Crm\Models\Client
+#     controller: projects
+#     editFunctions: Wcli\Wconfig\Functions\ClientFunctions
+#     emails:
+#         to: 
+#             key: email
+#             relation: contacts
+#         cc: 
+#             key: email
+#             relation: contacts
+#     relations:
+#         country: 
+#             label: Pays
+#         sector:
+#             images: true
+#             label: Secteur
+#     otherRelations:
+#             info:
+#                 class: Waka\Crm\Models\Info
+#                 label: Info
+##
+
+# ===================================

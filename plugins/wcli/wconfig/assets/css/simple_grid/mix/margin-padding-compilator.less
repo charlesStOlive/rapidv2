@@ -1,0 +1,54 @@
+each(range(5), {
+    @test : @index - 1 ;
+ 
+    .ma-@{test} {
+        margin:'@pm-step*'@test;
+    };
+    .mx-@{test} {
+        margin-left: '@pm-step*'@test;
+        margin-right: '@pm-step*'@test;
+    };
+    .my-@{test} {
+        margin-top:'@pm-step*'@test;
+        margin-bottom: '@pm-step*'@test;
+    }; 
+    .mt-@{test} {
+        margin-top: '@pm-step*'@test;
+    };
+    .mb-@{test} {
+        margin-bottom: '@pm-step*'@test;
+    };
+    .ml-@{test} {
+        margin-left: '@pm-step*'@test;
+    }; 
+    .mr-@{test} {
+        margin-right: '@pm-step*'@test;
+    }; 
+    .pa-@{test} {
+        padding:'@pm-step*'@test;
+    };
+    .px-@{test} {
+        padding-left: '@pm-step*'@test;
+        padding-right: '@pm-step*'@test; 
+    };
+    .py-@{test} {
+        padding-top: '@pm-step*'@test;
+        padding-bottom: '@pm-step*'@test;
+    };
+    .pt-@{test} {
+        padding-top: '@pm-step*'@test;
+    };
+    .pb-@{test} {
+        padding-bottom: '@pm-step*'@test;
+    };
+    .pr-@{test} {
+        padding-right: '@pm-step*'@test; 
+    };
+    .pl-@{test} {
+        padding-left: '@pm-step*'@test;
+    };  
+});
+
+.full {
+    width:100%;
+}

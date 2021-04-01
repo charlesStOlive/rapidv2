@@ -1,0 +1,15 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+icon: icon-building
+attributes:
+    name:
+        label: wcli.crm::region.name
+    slug:
+        label: wcli.crm::region.slug
+    email:
+        label: wcli.crm::region.email
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: date-medium

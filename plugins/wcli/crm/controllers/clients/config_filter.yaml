@@ -1,0 +1,22 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    segmentation:
+        label: Segmentation
+        scope: tagFilter
+        modelClass: Waka\Segator\Models\Tag
+        nameFrom: name
+    
+    region:
+        label: Région
+        modelClass: Wcli\Crm\Models\Region
+        nameFrom: name
+        conditions: region_id in (:filtered)
+
+    num_id:
+        label: ID client
+        type: number
+        conditions: id = ':filtered'
+        size: 1

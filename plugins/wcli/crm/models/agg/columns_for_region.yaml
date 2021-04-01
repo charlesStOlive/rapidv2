@@ -1,0 +1,26 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+
+columns:
+    year:
+            label: waka.agg::lang.agg.year
+    type:
+        label: waka.agg::lang.agg.type
+    num:
+        label: waka.agg::lang.agg.num
+    column:
+        label: waka.agg::lang.agg.column
+    count:
+        label: waka.agg::aggeable.count
+        type: number
+    sum:
+        label: waka.agg::aggeable.sum
+        
+        type: euro-int
+    ended_at:
+        label: waka.agg::aggeable.ended_at
+        type: date
+        mode: date
+

@@ -1,0 +1,29 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        invisible: true
+
+    name:
+        label: wcli.crm::sale.name
+        searchable: true
+    gamme_r:
+        label: wcli.crm::sale.gamme
+        searchable: true
+        relation: gamme
+        select: name
+        searchable: true
+    montant:
+        label: wcli.crm::sale.montant
+        searchable: true
+    sale_at:
+        label: wcli.crm::sale.sale_at
+        type: date
+        ignoreTimezone: true
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: timetense

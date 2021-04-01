@@ -1,0 +1,111 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+        invisible: true
+    action:
+        label: wcli.crm::region.action
+        type: waka-btn-actions
+        icon: icon-wrench
+        clickable: false
+        searchable: false
+        sortable: false
+        width: 25px
+    name:
+        label: wcli.crm::region.name
+        searchable: true
+    slug:
+        label: wcli.crm::region.slug
+        searchable: true
+    email:
+        label: wcli.crm::region.email
+        searchable: true
+    s_y_r:
+        label: wcli.crm::region.s_y
+        relation: unique
+        select: s_y
+        searchable: true
+    s_y_1_r:
+        label: wcli.crm::region.s_y_1
+        relation: unique
+        select: s_y_1
+        searchable: true
+        invisible: true
+    c_y_r:
+        label: wcli.crm::region.c_y
+        relation: unique
+        select: c_y
+        searchable: true
+        invisible: true
+    c_y_1_r:
+        label: wcli.crm::region.c_y_1
+        relation: unique
+        select: c_y_1
+        searchable: true
+        invisible: true
+    s_q_r:
+        label: wcli.crm::region.s_q
+        relation: unique
+        select: s_q
+        searchable: true
+    s_q_1_r:
+        label: wcli.crm::region.s_q_1
+        relation: unique
+        select: s_q_1
+        searchable: true
+        invisible: true
+    s_q_n_1_r:
+        label: wcli.crm::region.s_q_n_1
+        relation: unique
+        select: s_q_n_1
+        searchable: true
+        invisible: true
+    s_q_1_n_1_r:
+        label: wcli.crm::region.s_q_1_n_1
+        relation: unique
+        select: s_q_1_n_1
+        searchable: true
+    s_m_r:
+        label: wcli.crm::region.s_m
+        relation: unique
+        select: s_m
+        searchable: true
+    s_m_1_r:
+        label: wcli.crm::region.s_m_1
+        relation: unique
+        select: s_m_1
+        searchable: true
+        invisible: true
+    s_m_n_1_r:
+        label: wcli.crm::region.s_m_n_1
+        relation: unique
+        select: s_m_n_1
+        searchable: true
+        invisible: true
+    s_m_1_n_1_r:
+        label: wcli.crm::region.s_m_1_n_1
+        relation: unique
+        select: s_m_1_n_1
+        searchable: true
+        invisible: true
+    s_w_1_r:
+        label: wcli.crm::region.s_w_1
+        relation: unique
+        select: s_w_1
+        searchable: true
+    s_w_2_r:
+        label: wcli.crm::region.s_w_2
+        relation: unique
+        select: s_w_2
+        searchable: true
+        invisible: true
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: timetense
+    sort_order:
+        label: waka.utils::lang.global.sort_order
+        invisible: true

@@ -1,0 +1,39 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+tabs:
+    defaultTab: wcli.crm::client.tab_aggs
+    icons: 
+        wcli.crm::client.tab_aggs: icon-line-chart
+        wcli.crm::client.tab_sales: icon-money
+        wcli.crm::client.tab_info: icon-building
+    fields:    
+        name:
+            label: wcli.crm::region.name
+            span: left
+            required: true
+            tab: wcli.crm::region.tab_info
+        slug:
+            label: wcli.crm::region.slug
+            span: right
+            required: true
+            preset: name
+            tab: wcli.crm::region.tab_info
+        email:
+            label: wcli.crm::region.email
+            span: full
+            required: true
+            default: inc@inc.com
+            tab: wcli.crm::region.tab_info
+        clients:
+            label: wcli.crm::region.clients
+            span: full
+            type: partial
+            path: field_clients
+            tab: wcli.crm::region.tab_info
+        aggs:
+            label: wcli.crm::region.aggs
+            span: full
+            type: partial
+            path: field_aggs
+            tab: wcli.crm::region.tab_aggs

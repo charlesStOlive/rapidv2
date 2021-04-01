@@ -1,0 +1,32 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: wcli.crm::gamme.form_name
+
+# Model Form Field configuration
+form: $/wcli/crm/models/gamme/fields.yaml
+
+# Model Class name
+modelClass: Wcli\Crm\Models\Gamme
+
+# Default redirect location
+defaultRedirect: wcli/crm/gammes
+
+# Create page
+create:
+    title: wcli.crm::gamme.create
+    redirect: wcli/crm/gammes/update/:id
+    redirectClose: wcli/crm/gammes
+    form: $/wcli/crm/models/gamme/fields_create.yaml
+
+# Update page
+update:
+    title: wcli.crm::gamme.update
+    redirect: wcli/crm/gammes
+    redirectClose: wcli/crm/gammes
+
+# Preview page
+preview:
+    title: wcli.crm::gamme.preview_name

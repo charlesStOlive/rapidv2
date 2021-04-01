@@ -1,0 +1,14 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: wcli.crm::region.name
+        span: left
+        required: true
+    slug:
+        label: wcli.crm::region.slug
+        span: right
+        required: true
+        preset: name

@@ -1,0 +1,41 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:    
+    name:
+        label: wcli.crm::client.name
+        span: left
+        required: true
+    region:
+        label: wcli.crm::client.region
+        span: right
+        type: relation
+        placeholder: waka.utils::lang.global.placeholder
+        nameFrom: name
+    siret:
+        label: wcli.crm::client.siret
+        span: left
+    aggs:
+        label: wcli.crm::client.aggs
+        span: full
+    email:
+        label: wcli.crm::client.email
+        span: right
+    sales:
+        label: wcli.crm::client.sales
+        span: full
+        type: partial
+        path: field_sales
+    address:
+        label: wcli.crm::client.address
+        span: left
+    cp:
+        label: wcli.crm::client.cp
+        span: right
+    city:
+        label: wcli.crm::client.city
+        span: left
+    tel:
+        label: wcli.crm::client.tel
+        span: right

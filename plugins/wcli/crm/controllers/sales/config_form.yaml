@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: wcli.crm::sale.form_name
+
+# Model Form Field configuration
+form: $/wcli/crm/models/sale/fields.yaml
+
+# Model Class name
+modelClass: Wcli\Crm\Models\Sale
+
+# Default redirect location
+defaultRedirect: wcli/crm/sales
+
+# Create page
+create:
+    title: wcli.crm::sale.create
+    redirect: wcli/crm/sales/update/:id
+    redirectClose: wcli/crm/sales
+
+# Update page
+update:
+    title: wcli.crm::sale.update
+    redirect: wcli/crm/sales
+    redirectClose: wcli/crm/sales
+
+# Preview page
+preview:
+    title: wcli.crm::sale.preview_name

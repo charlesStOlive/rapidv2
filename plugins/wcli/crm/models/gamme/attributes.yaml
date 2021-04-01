@@ -1,0 +1,15 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+icon: icon-building
+attributes:
+    name:
+        label: wcli.crm::gamme.name
+    slug:
+        label: wcli.crm::gamme.slug
+    nbSalesMontant:
+        label: wcli.crm::gamme.nbSalesMontant
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: date-medium

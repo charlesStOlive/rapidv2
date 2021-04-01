@@ -1,0 +1,20 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    status:
+        label: "Choisissez un type d' aggregation ( par défaut : Mois )"
+        type: group
+        # default: 
+        #     month: Mois
+        conditions: type in (:filtered)
+        options:
+            month: Mois
+            quarter: Trimestre
+            year: Année
+
+    
+    
+            
+            

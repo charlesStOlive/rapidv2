@@ -1,0 +1,32 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: wcli.crm::region.form_name
+
+# Model Form Field configuration
+form: $/wcli/crm/models/region/fields.yaml
+
+# Model Class name
+modelClass: Wcli\Crm\Models\Region
+
+# Default redirect location
+defaultRedirect: wcli/crm/regions
+
+# Create page
+create:
+    title: wcli.crm::region.create
+    redirect: wcli/crm/regions/update/:id
+    redirectClose: wcli/crm/regions
+    form: $/wcli/crm/models/region/fields_create.yaml
+
+# Update page
+update:
+    title: wcli.crm::region.update
+    redirect: wcli/crm/regions/update/:id
+    redirectClose: wcli/crm/regions
+
+# Preview page
+preview:
+    title: wcli.crm::region.preview_name

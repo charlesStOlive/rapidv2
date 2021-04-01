@@ -1,0 +1,58 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+tabs:
+    defaultTab: wcli.crm::client.tab_aggs
+    icons: 
+        wcli.crm::client.tab_aggs: icon-line-chart
+        wcli.crm::client.tab_sales: icon-money
+        wcli.crm::client.tab_info: icon-building
+    fields:    
+        aggs:
+            label: wcli.crm::client.aggs
+            span: full
+            type: partial
+            path: field_aggs
+            tab: wcli.crm::client.tab_aggs
+        sales:
+            label: wcli.crm::client.sales
+            span: full
+            type: partial
+            path: field_sales
+            tab: wcli.crm::client.tab_sales
+        name:
+            label: wcli.crm::client.name
+            span: left
+            required: true
+            tab: wcli.crm::client.tab_info
+        region:
+            label: wcli.crm::client.region
+            span: right
+            type: relation
+            placeholder: waka.utils::lang.global.placeholder
+            nameFrom: name
+            tab: wcli.crm::client.tab_info
+        siret:
+            label: wcli.crm::client.siret
+            span: left
+            tab: wcli.crm::client.tab_info
+        email:
+            label: wcli.crm::client.email
+            span: right
+            tab: wcli.crm::client.tab_info
+        address:
+            label: wcli.crm::client.address
+            span: left
+            tab: wcli.crm::client.tab_info
+        cp:
+            label: wcli.crm::client.cp
+            span: right
+            tab: wcli.crm::client.tab_info
+        city:
+            label: wcli.crm::client.city
+            span: left
+            tab: wcli.crm::client.tab_info
+        tel:
+            label: wcli.crm::client.tel
+            span: right
+            tab: wcli.crm::client.tab_info

@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'October CMS',
+    'name' => 'Rapid v2',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,7 +111,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,7 @@ return [
     |
     */
 
-    'key' => 'base64:BkG5unSgffuQNwYXpfhGedGgJ1a9VCL5hqQFnDaem90=',
+    'key' => env('APP_KEY', ''),
 
     'cipher' => 'AES-256-CBC',
 
@@ -157,6 +157,9 @@ return [
         // 'Illuminate\Html\HtmlServiceProvider', // Example
 
         'System\ServiceProvider',
+        Spatie\Backup\BackupServiceProvider::class,
+        ZeroDaHero\LaravelWorkflow\WorkflowServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ]),
 
     /*
@@ -191,7 +194,8 @@ return [
     */
 
     'aliases' => array_merge(include(base_path('modules/system/aliases.php')), [
-
+        'Workflow' => ZeroDaHero\LaravelWorkflow\Facades\WorkflowFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'Str' => 'Illuminate\Support\Str', // Example
 
     ]),

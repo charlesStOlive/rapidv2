@@ -1,0 +1,127 @@
+/* ==== GRID SYSTEM ==== */
+/**
+*** SIMPLE GRID
+*** (C) ZACH COLE 2016
+**/
+
+.table {
+  display:table;
+  table-layout: fixed;
+}
+.tb-row {
+  display:table-row; 
+  width: 100%;
+}
+
+.sg-row {
+  position: relative;
+  width: 100%; 
+}
+
+.sg-row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+
+.cel,
+.cel-1,
+.cel-2,
+.cel-3,
+.cel-4,
+.cel-5,
+.cel-6,
+.cel-7,
+.cel-8,
+.cel-9,
+.cel-10,
+.cel-11,
+.cel-12 {
+  display:table-cell;
+  vertical-align: middle
+  
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  width: 96%;
+}
+
+
+
+.row::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.hidden-sm {
+  display: none;
+}
+
+
+@media only screen and (min-width: 45em) {
+  /* 720px */
+  .col-1,
+  .cel-1 {
+    width: 4.33%;
+  }
+  .col-2,
+  .cel-2 {
+    width: 12.66%;
+  }
+  .col-3,
+  .cel-3 {
+    width: 21%;
+  }
+  .col-4,
+  .cel-4 {
+    width: 29.33%;
+  }
+  .col-5,
+  .cel-5 {
+    width: 37.66%;
+  }
+  .col-6,
+  .cel-6 {
+    width: 46%;
+    //modification de 46 à 45.9 pour accepté border
+  }
+  .col-7,
+  .cel-7 {
+    width: 54.33%;
+  }
+  .col-8,
+  .cel-8 {
+    width: 62.66%;
+  }
+  .col-9,
+  .cel-9 {
+    width: 71%;
+  }
+  .col-10,
+  .cel-10 {
+    width: 79.33%;
+  }
+  .col-11,
+  .cel-11 {
+    width: 87.66%;
+  }
+  .col-12,
+  .cel-12 {
+    width: 96%;
+  }
+  .hidden-sm {
+    display: block;
+  }
+}

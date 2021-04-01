@@ -1,0 +1,18 @@
+<?php Block::put('breadcrumb') ?>
+<?=$this->btnsWidget->renderBreadcrump()?>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+<div class="form-preview">
+    <?= $this->formRenderPreview() ?>
+    <?= $this->relationRender('clients') ?>
+</div>
+
+<?php else: ?>
+
+<p class="flash-message static error"><?= e($this->fatalError) ?></p>
+<p><a href="<?= Backend::url('wcli/crm/regions') ?>"
+       class="btn btn-default">Return to region list</a></p>
+
+<?php endif ?>

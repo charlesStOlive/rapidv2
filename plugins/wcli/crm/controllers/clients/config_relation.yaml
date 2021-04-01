@@ -1,0 +1,29 @@
+# ===================================
+# Relation Behavior Config
+# ===================================
+
+sales:
+    label: wcli.crm::client.sales
+    manage:
+        form: $/wcli/crm/models/sale/fields_for_client.yaml
+    view:
+        list: $/wcli/crm/models/sale//columns_for_client.yaml
+        recordUrl: wcli/crm/sales/preview/:id
+        recordsPerPage: 20
+        toolbarButtons: false
+        defaultSort:
+            column: sale_at
+            direction: desc
+aggs:
+    label: wcli.crm::client.aggs
+    manage:
+        form: $/wcli/crm/models/agg/fields_for_client.yaml
+    view:
+        list: $/wcli/crm/models/agg//columns_for_client.yaml
+        recordUrl: wcli/crm/aggs/preview/:id
+        filter: $/wcli/crm/controllers/clients/config_filter_aggregables.yaml
+        recordsPerPage: 20
+        toolbarButtons: false
+        defaultSort:
+            column: ended_at
+            direction: desc

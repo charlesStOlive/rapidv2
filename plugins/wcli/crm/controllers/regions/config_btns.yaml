@@ -1,0 +1,76 @@
+# ===================================
+#  Btn  Behavior Config
+# ===================================
+
+
+modelClass: Wcli\Crm\Models\Region
+
+workflow: false 
+
+###BREADCRUMP
+breadcrump:
+    inSettings: false 
+    indexUrl: wcli/crm/regions
+    indexlabel: wcli.crm::region.title
+    title: wcli.crm::region.form_name
+
+###TOOL_BAR
+tool_bar:
+    base:
+        create: 
+            show: true
+            permissions: [nobody]
+            url: wcli/crm/regions/create
+        redorder: 
+            show: true
+            permissions: []
+            url: wcli/crm/regions/reorder
+        delete: 
+            show: true
+            permissions: [nobody]
+    config_btns:
+            format: all
+            btns:
+                excelImportChild:
+                    config: waka.importexport::btns.importChild
+    config_lot:
+        format: all
+        btns: 
+            
+            lot_mail:
+                config: waka.mailer::btns.lot_mail
+                group: waka.utils::lang.prod.send
+    # partials: #Attention seul les variables modelId et modelClass (class du controller) sont disponible sans les partials.  
+    #     testbtns:
+    #         url: $/wcli/crm/controllers/projects/_test_index.htm
+
+###ACTION_BAR Producteurs. Les behavior liée aux boutons doivent êtres instanciés implements = [waka.xxx.behaviors.yyy] dans le controller. 
+action_bar:
+    config_btns:
+        format: grouped #unique : un seul bouton, all : tts les boutons
+        groups:
+            waka.utils::lang.prod.produce: oc-icon-file-text-o
+            waka.utils::lang.prod.send: oc-icon-external-link
+            waka.utils::lang.prod.tools: oc-icon-wrench
+        btns:
+            word:
+                config: waka.worder::btns.word
+                group: waka.utils::lang.prod.produce
+            pdf:
+                config: waka.pdfer::btns.pdf
+                group: waka.utils::lang.prod.produce
+            mail:
+                config: waka.mailer::btns.mail
+                group: waka.utils::lang.prod.send
+            mailto:
+                config: waka.mailtoer::btns.mailto
+                group: waka.utils::lang.prod.produce
+            excelExportChild:
+                config: waka.importexport::btns.exportChild
+                group: waka.utils::lang.prod.produce
+            excelImportChild:
+                config: waka.importexport::btns.importChild
+                group: waka.utils::lang.prod.tools
+    # partials: #Attention seul les variables modelId et modelClass (class du controller) sont disponible sans les partials.  
+    #     name:
+    #         url: $/wcli/crm/controllers/projects/_test_update.htm

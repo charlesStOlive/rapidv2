@@ -1,0 +1,16 @@
+# ===================================
+# Relation Behavior Config
+# ===================================
+
+sales:
+    label: wcli.crm::gamme.sales
+    manage:
+        form: $/wcli/crm/models/sale/fields_for_gamme.yaml
+    view:
+        list: $/wcli/crm/models/sale//columns_for_gamme.yaml
+        recordsPerPage: 20
+        recordUrl: wcli/crm/sales/update/:id
+        toolbarButtons: create|delete
+        defaultSort:
+            column: name
+            direction: asc

@@ -1,0 +1,16 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+icon: icon-money
+attributes:
+    name:
+        label: wcli.crm::sale.name
+    montant:
+        label: wcli.crm::sale.montant
+    sale_at:
+        label: wcli.crm::sale.sale_at
+        type: date-short
+    updated_at:
+        label: waka.utils::lang.global.updated_at
+        type: date-medium
