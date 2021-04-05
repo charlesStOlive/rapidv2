@@ -155,6 +155,7 @@ p {font-size:1rem;margin:0.1rem}.small {font-size:0.8rem}
 .hidden-sm {display:none}
 @media only screen and (min-width:45em) {.col-1,.cel-1 {width:4.33% }.col-2,.cel-2 {width:12.66% }.col-3,.cel-3 {width:21% }.col-4,.cel-4 {width:29.33% }.col-5,.cel-5 {width:37.66% }.col-6,.cel-6 {width:46% }.col-7,.cel-7 {width:54.33% }.col-8,.cel-8 {width:62.66% }.col-9,.cel-9 {width:71% }.col-10,.cel-10 {width:79.33% }.col-11,.cel-11 {width:87.66% }.col-12,.cel-12 {width:96% }.hidden-sm {display:block }}
 .chart-title {font-weight:700;text-align:center}
+.tab-entete {background-color:#143d59}
 .container {margin-left:auto;margin-right:auto}
 img {position:relative;width:100%;max-height:initial !important;max-width:initial !important}
 .bg-img-cover {background-position:center;background-repeat:no-repeat;background-size:cover}

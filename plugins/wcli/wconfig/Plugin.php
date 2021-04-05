@@ -32,8 +32,8 @@ class Plugin extends PluginBase
     public function register()
     {
         CombineAssets::registerCallback(function ($combiner) {
-            $combiner->registerBundle('$/waka/wconfig/assets/css/simple_grid/email.less');
-            $combiner->registerBundle('$/waka/wconfig/assets/css/simple_grid/pdf.less');
+            $combiner->registerBundle('$/wcli/wconfig/assets/css/simple_grid/email.less');
+            $combiner->registerBundle('$/wcli/wconfig/assets/css/simple_grid/pdf.less');
         });
 
     }

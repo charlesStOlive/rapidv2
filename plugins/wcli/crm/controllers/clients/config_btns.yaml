@@ -29,14 +29,25 @@ tool_bar:
             show: true
             permissions: [nobody]
     config_btns:
-            format: all
+            format: grouped
+            groups:
+                waka.utils::lang.prod.tools: oc-icon-wrench
             btns:
+                tag:
+                    config: waka.segator::btns.tagModel
+                    group: waka.utils::lang.prod.tools
+                    permissions: wcli.crm.user.*
+                aggAll:
+                    config: waka.agg::btns.aggAll
+                    group: waka.utils::lang.prod.tools
+                    permissions: wcli.crm.*
                 excelImportChild:
                     config: waka.importexport::btns.importChild
+                    group: waka.utils::lang.prod.tools
+                    permissions: wcli.crm.user.*
     config_lot:
         format: all
         btns: 
-            
             lot_mail:
                 config: waka.mailer::btns.lot_mail
                 group: waka.utils::lang.prod.send
@@ -68,9 +79,11 @@ action_bar:
             excelExportChild:
                 config: waka.importexport::btns.exportChild
                 group: waka.utils::lang.prod.produce
+                permissions: wcli.crm.user.*
             excelImportChild:
                 config: waka.importexport::btns.importChild
                 group: waka.utils::lang.prod.tools
+                permissions: wcli.crm.user.*
     # partials: #Attention seul les variables modelId et modelClass (class du controller) sont disponible sans les partials.  
     #     name:
     #         url: $/wcli/crm/controllers/projects/_test_update.htm

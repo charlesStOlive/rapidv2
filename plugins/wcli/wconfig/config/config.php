@@ -10,30 +10,30 @@ return [
     ],
     'start_data' => [
         'ventes_2019' => [
-            'class' => '\Waka\Crm\Classes\Imports\SalesImport',
+            'class' => '\Wcli\Crm\Classes\Imports\SalesImport',
             'table' => 'wcli_crm_sales',
             'truncate' => true,
         ],
         'ventes_2020' => [
-            'class' => '\Waka\Crm\Classes\Imports\SalesImport',
+            'class' => '\Wcli\Crm\Classes\Imports\SalesImport',
             'table' => 'wcli_crm_sales',
         ],
         'ventes_2021' => [
-            'class' => '\Waka\Crm\Classes\Imports\SalesImportDate',
+            'class' => '\Wcli\Crm\Classes\Imports\SalesImportDate',
             'table' => 'wcli_crm_sales',
         ],
         'clients' => [
-            'class' => '\Waka\Crm\Classes\Imports\ClientsImport',
+            'class' => '\Wcli\Crm\Classes\Imports\ClientsImport',
             'table' => 'wcli_crm_clients',
             'truncate' => true,
         ],
         'gammes' => [
-            'class' => '\Waka\Crm\Classes\Imports\GammesImport',
+            'class' => '\Wcli\Crm\Classes\Imports\GammesImport',
             'table' => 'wcli_crm_gammes',
             'truncate' => true,
         ],
         'regions' => [
-            'class' => '\Waka\Crm\Classes\Imports\RegionsImport',
+            'class' => '\Wcli\Crm\Classes\Imports\RegionsImport',
             'table' => 'wcli_crm_regions',
             'truncate' => true,
         ],

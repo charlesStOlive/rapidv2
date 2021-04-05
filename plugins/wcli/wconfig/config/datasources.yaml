@@ -14,20 +14,20 @@ sale:
     code: sale
     id: 3
     test_id: 1
-    author: Waka
+    author: Wcli
     plugin: Crm
     name : Sale
     label : vente
-    class: Waka\Crm\Models\Sale
+    class: Wcli\Crm\Models\Sale
 
 client:
     label: Client
     code: client
     test_id: 5537
-    author: Waka
+    author: Wcli
     plugin: Crm
     name : Client
-    class: Waka\Crm\Models\Client
+    class: Wcli\Crm\Models\Client
     # controller: waka/crm/clients
     editFunctions: Wcli\Wconfig\Functions\Client
     aggs: 
@@ -80,10 +80,10 @@ client:
     relations:
         region: 
             label: Région
-            attributes: waka/crm/models/region/attributes.yaml
+            attributes: wcli/crm/models/region/attributes.yaml
         unique:
             label: Aggrégation Unique
-            attributes: waka/crm/models/agg/attributes.yaml
+            attributes: wcli/crm/models/agg/attributes.yaml
             # image: true
             # embed: [country]
 
@@ -92,11 +92,11 @@ region:
     code: region
     test_id: 1
     id: 2
-    author: Waka
+    author: Wcli
     plugin: Crm
     name: Region
     label: Région
-    class: Waka\Crm\Models\Region
+    class: Wcli\Crm\Models\Region
     # controller: waka/crm/regions
     editFunctions: Wcli\Wconfig\Functions\Region
     publications:
@@ -159,4 +159,4 @@ region:
         #     relation: client.contactsrelations:
         unique:
             label: Aggrégation Unique
-            attributes: waka/crm/models/agg/attributes_region.yaml
+            attributes: wcli/crm/models/agg/attributes_region.yaml

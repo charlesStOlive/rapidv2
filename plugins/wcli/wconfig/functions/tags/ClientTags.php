@@ -3,8 +3,8 @@
 namespace Wcli\Wconfig\Functions\Tags;
 
 use Db;
-use Waka\Crm\Models\Gamme;
-use Waka\Crm\Models\Sale;
+use Wcli\Crm\Models\Gamme;
+use Wcli\Crm\Models\Sale;
 use Waka\Segator\Classes\BaseTag;
 use Wcli\Wconfig\Models\UniqueAgg;
 
@@ -21,10 +21,10 @@ class ClientTags extends BaseTag
             'evolutionVente' => [
                 'name' => "Rechercher volume de vente sur une période",
                 'attributes' => [
-                    'periode' => $this->getPeriodeAgg("Choisissez une aggrégation", "right"),
+                    'periode' => $this->getPeriodeAgg("Choisissez une aggrégation", "left"),
                     'periode_calc' => $this->getPeriodeCalc("opérateur", "left"),
                     'nb' => [
-                        'label' => "Minimum",
+                        'label' => "Valeur",
                         'type' => "number",
                         'required' => true,
                         'span' => 'right',

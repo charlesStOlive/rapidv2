@@ -9,11 +9,14 @@ class RegionsImport implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
+        $faker = \Faker\Factory::create('fr_FR');
+        
         foreach ($rows as $row) {
             $region = new Region();
             $region->id = $row['id'] ?? null;
             $region->name = $row['name'] ?? null;
             $region->slug = $row['slug'] ?? null;
+            $region->email = $faker->email;
             $region->save();
         }
     }

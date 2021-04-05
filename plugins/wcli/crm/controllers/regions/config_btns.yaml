@@ -29,10 +29,19 @@ tool_bar:
             show: true
             permissions: [nobody]
     config_btns:
-            format: all
+            format: grouped
+            groups:
+                waka.utils::lang.prod.tools: oc-icon-wrench
             btns:
+                tag:
+                    config: waka.segator::btns.tagModel
+                    group: waka.utils::lang.prod.tools
+                aggAll:
+                    config: waka.agg::btns.aggAll
+                    group: waka.utils::lang.prod.tools
                 excelImportChild:
                     config: waka.importexport::btns.importChild
+                    group: waka.utils::lang.prod.tools
     config_lot:
         format: all
         btns: 

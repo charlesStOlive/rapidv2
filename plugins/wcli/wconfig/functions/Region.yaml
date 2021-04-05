@@ -147,7 +147,7 @@ topClient:
             name:
                 label: nom du client
         attributes:
-            main: waka/crm/models/agg/attributes_region.yaml
+            main: wcli/crm/models/agg/attributes_region.yaml
 
 periodeGraph:
     name: Période éditable

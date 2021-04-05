@@ -22,7 +22,7 @@ class Region extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields
@@ -100,7 +100,7 @@ class Region extends Model
     public $morphTo = [];
     public $morphOne = [
         'unique' => [
-            'Waka\Wconfig\Models\UniqueAgg',
+            'Wcli\Wconfig\Models\UniqueAgg',
             'name' => 'uniqueable',
         ],
     ];

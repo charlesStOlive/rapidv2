@@ -3,7 +3,7 @@
 namespace Wcli\Wconfig\Functions\Querys;
 
 use Waka\Agg\Classes\AggQueryBase;
-use Waka\Crm\Models\Sale;
+use Wcli\Crm\Models\Sale;
 use \Db;
 
 class ClientSalesQuery extends AggQueryBase
