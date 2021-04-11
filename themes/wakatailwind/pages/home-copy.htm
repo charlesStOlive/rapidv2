@@ -1,0 +1,174 @@
+title = "test"
+url = "/test"
+layout = "default"
+is_hidden = 0
+
+[contenteditor ceditor]
+[contenteditor ctitle]
+[contenteditor ceditor2]
+[contenteditor ceditor3]
+==
+<?php
+use Waka\Wcms\Models\Need;
+function onStart()
+{
+$this['needs'] = Need::get();
+}
+?>
+==
+{##}
+<!--Hero-->
+<div class="pt-24">
+
+    <div class="container mx-auto flex flex-wrap items-center justify-center">
+        <!--Left Col-->
+        <div class="w-full md:w-1/2 px-2 text-center md:text-left">
+            <div class="c-rich-text">
+                <!--Ne pas oublier d'ajouter la classe c-rich-text pour tailwind-->
+                {% component 'ceditor' file="home/intro.htm" %}
+            </div>
+            <button class="modal-open btn btn-secondary mt-12 z-10">Prendre
+                contact</button>
+
+        </div>
+        <!--Right Col-->
+        <div class="md:w-1/2 py-6 text-center">
+            {% partial 'svgs/clouddocs' %}
+        </div>
+
+    </div>
+
+</div>
+
+
+{% partial 'site/separator' %}
+
+
+
+<section class="bg-white border-b py-8">
+    <div class="container mx-auto m-8">
+        <h2 class="w-full my-2 text-center text-mydark">
+            {% component 'ctitle' file="home/c1_title.htm" fixture="span" %}</h2>
+        <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+
+        <div class="container flex flex-wrap items-center justify-center">
+            <div class="w-full md:w-1/2 p-2">
+                <div class="text-mydark c-rich-text">
+                    {% component 'ceditor2' file="home/c1_a.htm" %}
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-2 h-quarterscreen">
+                {% partial 'svgs/undraw_Organizing_projects_0p9a' %}
+
+            </div>
+            <div class="hidden md:block w-full md:w-1/2 p-2 h-quarterscreen">
+                {% partial 'svgs/some_apps' %}
+            </div>
+            <div class="w-full md:w-1/2 p-2">
+                <div class="text-mydark c-rich-text">
+                    {% component 'ceditor3' file="home/c1_b.htm" %}
+                </div>
+            </div>
+            <div class="md:hidden block w-full md:w-1/2 p-2 h-quarterscreen">
+                {% partial 'svgs/some_apps' %}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="bg-fixed"
+    style="background-size:cover;background-repeat:no-repeat;background-image:url(https://res.cloudinary.com/charles-saint-olive/image/upload/c_fill,h_603,q_auto:good,w_1024/v1580719783/wakaari/assets/fabio-oyXis2kALVg-unsplash.jpg)">
+    <div class="flex justify-center">
+        <h2 class="my-12">
+            {% component 'ctitle' file="home/c2_title.htm" fixture="span" %}</h2>
+    </div>
+    {% partial 'site/separator' %}
+</div>
+
+<section class="bg-white">
+
+    <div class="px-6 pt-4 pb-12">
+        <div class="flex -m-4 flex-wrap">
+            <h2 class="w-full my-2 text-center text-mydark">
+                {% component 'ctitle' file="home/c3_title.htm" fixture="span" %}</h2>
+            <div class="w-full mb-4">
+                <div class="-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="w-full">
+                <p class="px-64 mr-auto text-mydark text-center">
+                    {% component 'ctitle' file="home/c3_subtitle.htm" fixture="span" %}</p>
+            </div>
+
+            <div class="container mx-auto">
+                {% for need in needs %}
+
+                <div class="my-4 gradient rounded shadow w-full flex">
+                    <div class="hidden w-full lg:block lg:w-1/5">
+                        {%if need.state == 'ready' %}
+                        <a href="need/{{ need.slug }}"><img class="p-2 w-full h-full object-cover"
+                                src="{{ need.main_image | getCloudiUrl(400,350,'jpeg') }}"></a>
+                        {% else %}
+                        <img class="p-2 w-full h-full min-h-quarterscreen opacity-75 object-cover"
+                            src="{{ need.main_image | getCloudiUrl(400,350,'jpeg') }}">
+                        {% endif %}
+                    </div>
+                    <div class="w-full lg:w-4/5 flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start">
+                        <div class="w-full">
+                            <h4 class="p-2">Votre besoin : {{ need.name }}</h4>
+                            <p class="px-2 pb-2">{{ need.intro }} |
+                                {%if need.state == 'ready' %}<a class="text-secondary underline"
+                                    href="need/{{ need.slug }}">En savoir&nbsp;+</a></p>
+                            {% else %}<span><b>Contenu en construction...</b></span>{% endif %}
+                            <p class="px-2 font-bold">Solutions utilsées : </p>
+                            <p class="px-2 small-caps text-sm">Voici une liste non exhaustive des solutions que nous
+                                utiliserons
+                                pour répondre à votre besoin
+                            </p>
+                        </div>
+                        {% for solution in need.solutions %}
+                        {% if solution.state == 'ready' %}
+                        <a href="solution/{{ solution.slug }}" class="animated_icon">
+                            <div class="p-2 my-1 mx-2 lg:mx-1 lg:w-56 h-16 text-sm flex bg-white shadow">
+                                <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                                <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
+                            </div>
+                        </a>
+                        {% else %}
+                        <div class="p-2 my-1 mx-2 lg:mx-1 lg:w-56 h-16 text-sm flex bg-gray-400">
+                            <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                            <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+{% partial 'site/separator' reverse='true' %}
+
+
+<section class="container mx-auto text-center pb-6 mb-12">
+
+    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+        {% component 'ctitle' file="home/c4_title.htm" fixture="span" %}</h1>
+    <div class="w-full mb-4">
+        <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+    </div>
+
+    <h3 class="my-4 text-3xl leading-tight">{% component 'ctitle' file="home/c4_text.htm" fixture="span" %}</h3>
+
+    <button class="modal-open btn btn-secondary p-2 m-2 w-48">Contactez-nous</button>
+
+</section>

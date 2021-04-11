@@ -1,0 +1,39 @@
+<div class="container m-auto text-mydark">
+    <div class="mb-4 bg-primary">
+        <div class="flex flex-col lg:flex-row justify-center lg:justify-start">
+            {% if not data.carousel_left %}
+            <div class="w-full lg:{{data.size_text}} flex flex-col justify-center items-center p-4 text-white">
+                <h3 class="text-center">{{data.title}}</h3>
+                <div class="p-2 text-center">{{data.text | raw}}</div>
+            </div>
+            <div class="w-full lg:{{data.size_carousel}}">
+                <div class="relative carousel overflow-hidden {{ data.text_color}} {{ data.bg_color|default('bg-white')}}" data-flickity='{ "autoPlay":true {%if data.show_button %}, "prevNextButtons": false {% endif %} }'>
+                    {% for elem in data.carousel %}
+                    <div class="w-full">
+                        <p class="p-1">{{ elem.text }}</p>
+                        <div class="w-full h-full">
+                            <img src="{{ elem.image | media }}" style="min-height:{{ data.height|default(100) }}px" class="w-full max-h-screen object-contain">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="w-full lg:{{data.size_carousel}}">
+                <div class="relative carousel overflow-hidden" data-flickity='{ "autoPlay":true {%if data.show_button %}, "prevNextButtons": false {% endif %} }'>
+                    {% for elem in data.carousel %}
+                    <div class="w-full {{data.bg_carousel_class}}">
+                        <p class="absolute p-4">{{ elem.text }}</p>
+                        <img src="{{ elem.image | media }}" class="w-full h-full max-h-screen object-cover">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="w-full lg:{{data.size_text}} flex flex-col justify-center items-center p-4">
+                <p class="text-2xl text-center">{{data.title}}</p>
+                <div class="p-2 text-center">{{data.text | raw}}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+{##}
+<!--Nav-->
+<nav id="header" class="fixed w-full z-30 top-0 text-white">
+
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0">
+
+        <div class="p-2 flex items-center">
+            <a id="logo_menu" href="{{ 'home'|page }}">
+                <img src="{{ 'assets/images/wakaari_logo_seul.png' | theme }}" class="h-12">
+            </a>
+        </div>
+
+        <div id="btn_mobile" class="block lg:hidden pr-4">
+            <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+            </button>
+        </div>
+        {{ useragent}}
+
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+            id="nav-content">
+            <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                <li><a class="mt-2 lg:mt-1 toggleColour lg:p-4 text-white px-0 block {% if this.page.id == 'home' %}border-secondary{% else %} border-transparent{% endif %} border-b-4 hover:border-secondary"
+                        href="{{ 'home'|page }}">Accueil</a></li>
+                <li><a id="nav-need"
+                        class="mt-2 lg:mt-1 toggleColour lg:p-4 text-white px-0 block border-b-4 border-transparent {% if this.page.id == 'need' %}border-secondary{% else %} border-transparent{% endif %} hover:border-primary"
+                        href="javascript:;">Votre besoin</a>
+                    <div id="nav-need-content"
+                        class="hidden relative md:absolute bg-white w-auto md:shadow-xl p-4 z-10 border-t-4 border-primary -m-1">
+                        <ul>
+                            {% for need in needMenu %}
+                            <li class="relative w-full p-1 {% if not loop.first %}mt-2{% endif %}"><a
+                                    class="hover:text-primary" href="/need/{{ need.slug}}">{{need.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li><a id="nav-solution"
+                        class="mt-2 lg:mt-1 toggleColour lg:p-4 text-white px-0 block border-b-4 border-transparent {% if this.page.id == 'solution' %}border-secondary{% else %} border-transparent{% endif %} hover:border-primary"
+                        href="javascript:;">Nos solutions</a>
+                    <div id="nav-solution-content"
+                        class="hidden relative md:absolute bg-white w-auto md:shadow-xl p-4 z-10 border-t-4 border-primary -m-1">
+                        <ul>
+                            {% for solution in solutionMenu %}
+                            <li class="relative w-full p-1 {%if not loop.first %}mt-2{% endif %}"><a
+                                    class="hover:text-primary" href="/solution/{{ solution.slug}}">{{solution.name}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                <li><a class="mt-2 lg:mt-1 toggleColour lg:p-4 text-white px-0 block border-b-4 border-transparent hover:border-primary lg:mr-4"
+                        href="{{ '/backend'}}">ERP</a></li>
+                <button id="navAction" class="hover:scale-105 mx-auto lg:mx-0 btn btn-secondary">Accès
+                    client</button>
+            </ul>
+        </div>
+
+    </div>
+</nav>

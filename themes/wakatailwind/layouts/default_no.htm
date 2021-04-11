@@ -1,0 +1,95 @@
+description = "Default layout"
+
+
+==
+
+==
+{##}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TaloktoB - {{ this.page.title }}</title>
+	<meta name="description" content="{{ this.page.meta_description }}">
+	<meta name="title" content="{{ this.page.meta_title }}">
+	<meta name="author" content="OctoberCMS">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="generator" content="OctoberCMS">
+	<link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+	<link rel="stylesheet" property="stylesheet" href="{{ 'assets/css/theme.css'|theme }}">
+	{% styles %}
+</head>
+<!-- For IE <= 9 -->
+<!--[if IE]>
+<script type="text/javascript">
+    window.location = "/erreur?url={{ thisurl }}";
+</script>
+<![endif]-->
+
+<!-- For IE > 9 -->
+<!-- <script type="text/javascript">
+	if (window.navigator.msPointerEnabled) {
+        window.location = "/erreur?url={{ thisurl }}";
+    }
+</script> -->
+
+<body class="leading-normal tracking-normal" style="font-family: 'Source Sans Pro', sans-serif;">
+
+	<section id="layout-content">
+		{% page %}
+	</section>
+
+	<!--Footer-->
+
+	<!-- Modal de contact -->
+	<div
+		class="modal fixed opacity-0 pointer-events-none w-full h-full top-0 left-0 flex items-center justify-center z-50">
+		<div class="modal-overlay absolute bottom-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+
+		<div
+			class="modal-container gradient w-full h-full lg:h-midscreen absolute bottom-0 left-0 shadow-2xl overflow-y-auto">
+			<!-- Add margin if you want to see some of the overlay behind the modal-->
+			<div class="relative modal-content py-4 text-left px-6">
+				<!--Title-->
+				<div class="absolute right-0 top-0 p-2 modal-close cursor-pointer z-50">
+					<svg class="fill-primary text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+						viewBox="0 0 18 18">
+						<path
+							d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+						</path>
+					</svg>
+				</div>
+				{% component 'wakaForm' %}
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<button class="hidden flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous"><svg
+			class="flickity-button-icon" viewBox="0 0 100 100">
+			<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+		</svg></button>
+	<button class="hidden flickity-button flickity-prev-next-button next" type="button" aria-label="Next"><svg
+			class="flickity-button-icon" viewBox="0 0 100 100">
+			<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"
+				transform="translate(100, 100) rotate(180) "></path>
+		</svg></button>
+	<ol class="hidden flickity-page-dots">
+		<li class="dot is-selected" aria-label="Page dot 1" aria-current="step"></li>
+		<li class="dot" aria-label="Page dot 2"></li>
+	</ol>
+
+	<!-- Scripts & Styles-->
+	<script src="{{ 'assets/javascript/theme.js'|theme }}"></script>
+
+	{% framework extras %}
+	{% scripts %}
+
+</body>
+
+</html>

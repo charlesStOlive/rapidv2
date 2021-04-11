@@ -1,0 +1,32 @@
+title = "Remerciements"
+url = "/remerciements"
+layout = "default"
+is_hidden = 0
+
+[contenteditor ceditor]
+[contenteditor ctitle]
+==
+==
+{##}
+<!--Hero-->
+<div class="pt-24">
+
+    <div class="container mx-auto">
+        <!--Left Col-->
+
+        <div class="w-full py-8 c-rich-text">
+            <!--Ne pas oublier d'ajouter la classe c-rich-text pour tailwind-->
+            {% component 'ctitle' file="remerciements/title.htm" %}
+        </div>
+
+
+    </div>
+
+
+    {% partial 'site/separator' %}
+    <div class="bg-white text-mydark py-8">
+        <div class="container mx-auto c-rich-text">
+            {% component 'ceditor' file="remerciements/content.htm" %}
+        </div>
+    </div>
+</div>

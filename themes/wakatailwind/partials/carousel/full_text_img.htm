@@ -1,0 +1,8 @@
+<div class="relative carousel overflow-hidden" data-flickity='{ "autoPlay":true}'>
+    {% for elem in data %}
+    <div class="bg-red w-full h-64">
+        <p class="absolute p-4">{{ elem.text }}</p>
+        <img src="{{ elem.src }}" class="w-full h-full object-cover">
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+//@import "../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css";
+// PERSO
+//Double system de heading pour l'instant pas très utile...
+@import "heading.scss";
+@import "theme.scss";
+@import "bg_video.scss";
+//FIN DU PERSO
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";

@@ -1,0 +1,97 @@
+title = "Besoin"
+url = "/need/:slug"
+layout = "default"
+==
+use Waka\Wcms\Models\Need;
+function onStart()
+{
+$need = Need::where('slug',$this->param('slug'))->first();
+$this['need'] = $need;
+}
+==
+{##}
+<!--Hero-->
+<div class="pt-24">
+
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <!--Left Col-->
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+            <p class="uppercase tracking-loose w-full">
+                {{need.catchline}}
+            </p>
+            <h1 class="w-full leading-none">
+                {{need.name}}
+                <p class="w-full leading-normal text-2xl my-4">
+                    {{need.intro}}
+                </p>
+            </h1>
+        </div>
+        <!--Right Col-->
+        <div class="md:w-3/5 py-6 text-center">
+            <div class="w-full m-auto md:w-4/5 mb-10">
+                <img class="animated fadeInRight slower shadow-lg h-500 w-full object-cover"
+                    src="{{ need.main_image|getCloudiUrl(800,400, 'jpg', 'fill') }}">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="relative -mt-12 lg:-mt-24 -mb-1">
+    <img class="w-full h-24 lg:h-40 object-cover lg:object-fill" src="{{ 'assets/images/wave.png' | theme }}"
+        alt="separator">
+</div>
+
+
+
+<section class="bg-white relative text-mydark">
+    <div class="container max-w-5xl mx-auto px-2 py-4">
+        <h2 class="w-full text-center">
+            Explications</h2>
+        <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="w-max-lg mb-4 mt-12 text-mydark c-rich-text">
+            {{ need.description_html  | raw  }}
+        </div>
+        {% for content in need.content %}
+
+        {% if content._group == 'carousel_text' %}
+        {% partial 'carousel/carousel_text' data=content %}
+        {% endif %}
+
+        {% if content._group == 'vimeo' %}
+        {% partial 'video/vimeo' data=content %}
+        {% endif %}
+
+        {% if content._group == 'text_svg' %}
+        {% partial 'blocs/text_svg' data=content %}
+        {% endif %}
+
+        {% endfor %}
+
+        {% if need.solutions | length > O %}
+        <h3 class="text-mydark">Les solutions utilisées pour ce genre de programme.</h3>
+        <div class="w-full flex flex-col flex-wrap lg:flex-row justify-center mt-2 lg:justify-start">
+            {% for solution in need.solutions %}
+            {% if solution.state == 'ready' %}
+            <a href="/solution/{{ solution.slug }}" class="animated_icon">
+                <div class="p-2 my-1 lg:mx-2 w-full lg:w-56 h-16 text-sm flex bg-white shadow">
+                    <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                    <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
+                </div>
+            </a>
+            {% else %}
+            <div class="p-2 my-1 lg:mx-2 w-full lg:w-56 h-16 text-sm flex bg-gray-400">
+                <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</section>

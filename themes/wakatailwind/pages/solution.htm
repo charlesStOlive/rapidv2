@@ -1,0 +1,120 @@
+title = "Besoin"
+url = "/solution/:slug"
+layout = "default"
+==
+use Waka\Wcms\Models\Solution;
+
+function onStart()
+{
+$solution = Solution::where('slug', $this->param('slug'))->first();
+$this['solution'] = $solution;
+}
+==
+{##}
+<!--Hero-->
+<div class="pt-24">
+
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <!--Left Col-->
+        <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left">
+            <h1 class="w-full leading-tight my-4">
+                {{solution.name}}
+            </h1>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="relative -mt-12 lg:-mt-32 -mb-1">
+    <img class="w-full h-24 lg:h-40 object-cover lg:object-fill" src="{{ 'assets/images/wave.png' | theme }}"
+        alt="separator">
+    <!--Right Col-->
+    <div class="relative container max-w-5xlg mx-auto">
+        <div class="hidden lg:block z-10 absolute top-0" style="top:-8em; right:5em">
+            <img class="object-cover" src="{{ solution.main_image.thumb(150,150) }}">
+        </div>
+    </div>
+</div>
+
+
+
+<section class="bg-white relative text-mydark">
+
+    <div class="container max-w-5xl mx-auto px-2 py-4">
+
+
+        <h2 class="text-center">
+            Explication</h2>
+        <!-- Flickity HTML init -->
+        <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="w-max-lg mb-4 mt-12 c-rich-text">
+            {{ solution.description_html  | raw  }}
+        </div>
+
+
+
+        {% for content in solution.content %}
+
+
+
+        {% if content._group == 'carousel_text' %}
+        {% partial 'carousel/carousel_text' data=content %}
+        {% endif %}
+
+        {% if content._group == 'vimeo' %}
+        {% partial 'video/vimeo' data=content %}
+        {% endif %}
+
+
+        {% endfor %}
+
+
+        {% if solution.needs  %}
+        <h3 class="py-4">Cette solution, permet de repondre à ce genre de besoin :</h3>
+        <div class="w-full flex flex-col flex-wrap lg:flex-row pb-6 items-center -mx-2 justify-center items-stretch">
+            {% for need in solution.needs %}
+            <div class="md:w-1/2 lg:w-1/3 px-2 pt-4 max-w-md flex flex-col">
+                {% if need.state == 'ready' %}
+                <div
+                    class="relative flex-1 bg-white rounded-t rounded-b-none group overflow-hidden shadow hover:shadow-2xl hover:bg-primary transition-all transition-500 text-mydark">
+                    <a href="/need/{{ need.slug }}" class="flex flex-col mb-8">
+                        <img class="h-20 w-full w-max-400 object-cover opacity-100 group-hover:opacity-75"
+                            src="{{ need.main_image|getCloudiUrl(400,100, 'jpg', 'fill') }}">
+                        <div class="w-full font-bold group-hover:text-white pt-4 px-6">{{ need.name }}</div>
+                        <p class="text-mydark text-sm group-hover:text-white px-6">{{ need.intro }}</p>
+                    </a>
+                    <div class="absolute h-8 bottom-0 right-0">
+                        <a href="#" class="m-4 hover:underline text-secondary "><b>En savoir +</b></a>
+                    </div>
+                </div>
+                {% else %}
+                <div
+                    class="relative flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow transition-all transition-500 text-mydark">
+                    <a class="flex flex-col mb-8">
+                        <img class="h-20 w-full w-max-400 object-cover opacity-80"
+                            src="{{ need.main_image|getCloudiUrl(400,100, 'jpg', 'fill') }}">
+                        <div class="w-full font-bold pt-4 px-6">{{ need.name }}</div>
+                        <p class="text-mydark text-sm px-6">{{ need.intro }}</p>
+                    </a>
+                    <div class="absolute h-8 bg-red bottom-0 right-0">
+                        <span href="#" class="m-4 text-primary"><b>En construction</b>
+                        </span></div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif%}
+
+
+
+
+
+    </div>
+
+
+</section>

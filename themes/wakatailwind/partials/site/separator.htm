@@ -1,0 +1,9 @@
+{% if reverse != true %}
+<div class="relative -mt-12 lg:-mt-24 -mb-2">
+    <img class="w-full h-24 lg:h-40 object-cover lg:object-fill" src="{{ 'assets/images/wave.png' | theme }}" alt="separator">
+</div>
+{% else %}
+<div class="relative">
+    <img class="w-full h-24 lg:h-40 object-cover lg:object-fill" src="{{ 'assets/images/wave_inverse.png' | theme }}" alt="separator">
+</div>
+{% endif %}

@@ -1,0 +1,34 @@
+title = "Erreur"
+url = "/erreur"
+is_hidden = 0
+==
+public function onStart() {
+if(Input::get('url')) {
+//trace_log("url : ".Input::get('url'));
+$this['url'] = Input::get('url');
+}
+}
+==
+{##}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Erreur - Navigateur</title>
+    <meta name="author" content="OctoberCMS">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="OctoberCMS">
+    {% styles %}
+</head>
+
+
+<body>
+    <h1 style="text-align: center; padding-top: 40px;">Veuillez changer de navigateur. </h1>
+    <p style="text-align: center; padding-top: 10px;"> Votre navigateur internet explorer 11 n'est pas compatible avec
+        notre site. copiez votre URL dans un navigateur du type : Chrome, Safari, Mozilla, Opérp, etc.</p>
+    <p style="text-align: center; padding-top: 10px; color:green">{{ url }}</p>
+
+</body>
+
+</html>

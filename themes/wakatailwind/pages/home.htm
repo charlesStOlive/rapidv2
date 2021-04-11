@@ -1,0 +1,38 @@
+title = "Accueil"
+url = "/"
+layout = "default_no"
+is_hidden = 0
+
+[contenteditor ceditor]
+[contenteditor ctitle]
+[contenteditor ceditor2]
+[contenteditor ceditor3]
+==
+
+==
+{##}
+<!--Hero-->
+<video poster="" id="bgvid" class="myvid xs:hidden md:fixed" playsinline autoplay muted loop>
+    <source src="https://res.cloudinary.com/charles-saint-olive/video/upload/v1591980065/notilac/videos/rapid.webm"
+        type="video/webm">
+    <source src="https://res.cloudinary.com/charles-saint-olive/video/upload/v1591980065/notilac/videos/rapid.mp4"
+        type="video/mp4">
+</video>
+<video poster="" id="bgvid" class="myvid xs:fixed md:hidden" playsinline autoplay muted loop>
+    <source
+        src="https://res.cloudinary.com/charles-saint-olive/video/upload/c_fill,g_west,h_900,w_600/v1591980065/notilac/videos/rapid.webm">
+    <source
+        src="https://res.cloudinary.com/charles-saint-olive/video/upload/c_fill,g_west,h_900,w_600/v1591980065/notilac/videos/rapid.mp4"
+        type="video/mp4">
+</video>
+<div class="h-full w-full pattern absolute"></div>
+<div
+    class="absolute w-full md:w-64 inset-x-0 md:right-0 md:left-auto   md:m-8 md:p-12 font-bold md:rounded-lg shadow-lg  bg-white bg-opacity-75">
+    <div class="mx-auto text-center w-full p-2">
+        <img src="{{ 'assets/images/logo.png'|theme }}" class="h-12 mx-auto md:w-64 md:h-auto" />
+        <p class="my-4 text-primary">Gestion RAPID</p>
+        <div class="mx-auto"><a class="mx-auto lg:mx-0 btn btn-secondary my-4 z-10" href="{{ '/backend'}}">Accès
+                BO</a></div>
+        <div class="mt-2"><a href="https://notilac.fr" class="primary text-xs">Retour sur Notilac</a></div>
+    </div>
+</div>

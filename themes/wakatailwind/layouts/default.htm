@@ -1,0 +1,78 @@
+description = "Default layout"
+
+
+==
+
+==
+{##}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TaloktoB - {{ this.page.title }}</title>
+	<meta name="description" content="{{ this.page.meta_description }}">
+	<meta name="title" content="{{ this.page.meta_title }}">
+	<meta name="author" content="OctoberCMS">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="generator" content="OctoberCMS">
+	<link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+	<link rel="stylesheet" property="stylesheet" href="{{ 'assets/css/theme.css'|theme }}">
+	{% styles %}
+</head>
+<!-- For IE <= 9 -->
+<!--[if IE]>
+<script type="text/javascript">
+    window.location = "/erreur?url={{ thisurl }}";
+</script>
+<![endif]-->
+
+<!-- For IE > 9 -->
+<!-- <script type="text/javascript">
+	if (window.navigator.msPointerEnabled) {
+        window.location = "/erreur?url={{ thisurl }}";
+    }
+</script> -->
+
+<body class="leading-normal tracking-normal" style="font-family: 'Source Sans Pro', sans-serif;">
+
+	<section id="layout-content">
+		{% page %}
+	</section>
+
+	<!--Footer-->
+	<footer id="layout_footer" class="bg-white">
+		{% partial 'site/footer' %}
+	</footer>
+
+
+	<!-- Modal de contact -->
+
+
+
+
+
+
+	<button class="hidden flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous"><svg
+			class="flickity-button-icon" viewBox="0 0 100 100">
+			<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+		</svg></button>
+	<button class="hidden flickity-button flickity-prev-next-button next" type="button" aria-label="Next"><svg
+			class="flickity-button-icon" viewBox="0 0 100 100">
+			<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"
+				transform="translate(100, 100) rotate(180) "></path>
+		</svg></button>
+	<ol class="hidden flickity-page-dots">
+		<li class="dot is-selected" aria-label="Page dot 1" aria-current="step"></li>
+		<li class="dot" aria-label="Page dot 2"></li>
+	</ol>
+
+	<!-- Scripts & Styles-->
+	<script src="{{ 'assets/javascript/theme.js'|theme }}"></script>
+
+	{% framework extras %}
+	{% scripts %}
+
+</body>
+
+</html>
