@@ -24,10 +24,14 @@ mix.js('src/js/app.js', 'javascript/theme.js')
     .purgeCss({
         content: [
             rootPath('pages/*.htm'),
+            rootPath('pages/**/*.htm'),
             rootPath('layouts/*.htm'),
+            rootPath('layouts/**/*.htm'),
             rootPath('partials/**/*.htm'),
+            rootPath('partials/*.htm'),
             rootPath('src/**/*.js'),
             rootPath('src/*.js'),
+            rootPath('../../plugins/waka/**/components/**/*.htm'),
             // rootPath('resources/**/*.jsx'),
             // rootPath('resources/**/*.ts'),
             // rootPath('resources/**/*.tsx'),
@@ -37,6 +41,7 @@ mix.js('src/js/app.js', 'javascript/theme.js')
         defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
         whitelistPatterns: [/-active$/, /-enter$/, /-leave-to$/]
     });
+mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'assets/webfonts');
 
 // Full API
 // mix.js(src, output);

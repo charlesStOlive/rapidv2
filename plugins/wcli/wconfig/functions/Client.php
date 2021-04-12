@@ -2,8 +2,9 @@
 
 namespace Wcli\Wconfig\Functions;
 
-use Waka\Crm\Models\Gamme;
+use Wcli\Crm\Models\Gamme;
 use Waka\Utils\Classes\FunctionsBase;
+use Waka\Charter\Controllers\Charts;
 
 class Client extends FunctionsBase
 {
@@ -38,17 +39,26 @@ class Client extends FunctionsBase
             'beginAtZero' => $attributes['beginAtZero'] ?? false,
             'color' => $attributes['color'],
         ];
-        $datas = [
-            'labels' => $labels,
-            'datasets' => [
-                [
-                    'data' => $dataSet,
-                    'label' => 'CA',
-                ],
-            ],
-        ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'bar_or_line', $options, $attributes['width'], $attributes['height']);
+        // $datas = [
+        //     'labels' => $labels,
+        //     'datasets' => [
+        //         [
+        //             'data' => $dataSet,
+        //             'label' => 'CA',
+        //         ],
+        //     ],
+        // ];
+        
+        // $charts = new \Waka\Charter\Controllers\Charts();
+
+        // $chart_url = $charts->createChartUrl($datas, 'bar_or_line', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('bar_or_line')
+                    ->addLabels($labels)
+                    ->addManualDataSet('CA', $dataSet)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,
@@ -75,23 +85,14 @@ class Client extends FunctionsBase
             'type' => $attributes['chartType'],
             'beginAtZero' => $attributes['beginAtZero'] ?? false,
         ];
-        $datas = [
-            'labels' => $labels,
-            'datasets' => [
-                [
-                    'data' => $dataSet,
-                    'label' => 'CA',
-                    'yAxisID' => 'y_1',
-                ],
-                [
-                    'data' => $dataSet2,
-                    'label' => 'Volume',
-                    'yAxisID' => 'y_2',
-                ],
-            ],
-        ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'bar_or_line_2_axis', $options, $attributes['width'], $attributes['height']);
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('bar_or_line_2_axis')
+                    //->addChartDatas($datas)
+                    ->addLabels($labels)
+                    ->addManualDataSet('CA', $dataSet)
+                    ->addManualDataSet('Volume', $dataSet2)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,
@@ -171,16 +172,23 @@ class Client extends FunctionsBase
             'type' => $attributes['chartType'],
             'beginAtZero' => $attributes['beginAtZero'] ?? false,
         ];
-        $datas = [
-            'labels' => $sales->pluck('labels')->toArray(),
-            'datasets' => [
-                [
-                    'data' => $sales->pluck('value')->toArray(),
-                ],
-            ],
-        ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'pie_or_doughnut', $options, $attributes['width'], $attributes['height']);
+        // $datas = [
+        //     'labels' => $sales->pluck('labels')->toArray(),
+        //     'datasets' => [
+        //         [
+        //             'data' => $sales->pluck('value')->toArray(),
+        //         ],
+        //     ],
+        // ];
+        // $charts = new \Waka\Charter\Controllers\Charts();
+        // $chart_url = $charts->createChartUrl($datas, 'pie_or_doughnut', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('pie_or_doughnut')
+                    ->addLabels($sales->pluck('labels')->toArray())
+                    ->addManualDataSet('', $sales->pluck('value')->toArray())
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,

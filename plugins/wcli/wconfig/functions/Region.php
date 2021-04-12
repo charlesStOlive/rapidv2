@@ -2,9 +2,10 @@
 
 namespace Wcli\Wconfig\Functions;
 
-use Waka\Crm\Models\Gamme;
+use Wcli\Crm\Models\Gamme;
 use Waka\Utils\Classes\FunctionsBase;
 use Wcli\Wconfig\Models\UniqueAgg;
+use Waka\Charter\Controllers\Charts;
 
 class Region extends FunctionsBase
 {
@@ -48,8 +49,12 @@ class Region extends FunctionsBase
                 ],
             ],
         ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'bar_or_line', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('bar_or_line')
+                    ->addChartDatas($datas)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,
@@ -91,8 +96,12 @@ class Region extends FunctionsBase
                 ],
             ],
         ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'bar_or_line_2_axis', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('bar_or_line_2_axis')
+                    ->addChartDatas($datas)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,
@@ -178,8 +187,12 @@ class Region extends FunctionsBase
                 ],
             ],
         ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'pie_or_doughnut', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('pie_or_doughnut')
+                    ->addChartDatas($datas)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,
@@ -242,8 +255,14 @@ class Region extends FunctionsBase
                 ],
             ],
         ];
-        $charts = new \Waka\Charter\Controllers\Charts();
-        $chart_url = $charts->createChartUrl($datas, 'bar_or_line', $options, $attributes['width'], $attributes['height']);
+
+        $chart = new Charts();
+        $chart_url = $chart->setChartType('bar_or_line')
+                    ->addChartDatas($datas)
+                    ->addChartOptions($options)
+                    ->getChartUrl($attributes['width'], $attributes['height']);
+
+        
 
         $finalResult[0]['chart'] = [
             'path' => $chart_url,

@@ -7,19 +7,19 @@ tabs:
         wcli.crm::client.tab_aggs: icon-line-chart
         wcli.crm::client.tab_sales: icon-money
         wcli.crm::client.tab_info: icon-building
-    fields:    
-        aggs:
-            label: wcli.crm::client.aggs
-            span: full
-            type: partial
-            path: field_aggs
-            tab: wcli.crm::client.tab_aggs
+    fields: 
         sales:
             label: wcli.crm::client.sales
             span: full
             type: partial
             path: field_sales
             tab: wcli.crm::client.tab_sales
+        aggs:
+            label: wcli.crm::client.aggs
+            span: full
+            type: partial
+            path: field_aggs
+            tab: wcli.crm::client.tab_aggs
         name:
             label: wcli.crm::client.name
             span: left
@@ -56,3 +56,32 @@ tabs:
             label: wcli.crm::client.tel
             span: right
             tab: wcli.crm::client.tab_info
+        chart_2:
+            tab: wcli.crm::client.tab_aggs
+            label: "CA des 12 derniers mois"
+            span: left
+            type: chartform
+            chartType: bar_or_line
+            renderType: bar
+            labels: getSalesLabels
+            attributes:
+                type: month
+                take: 12
+                calcul: sum
+            dataSets:
+                first:
+                    label: CA
+                    fnc: getSalesValue   
+        chart_1:
+            tab: wcli.crm::client.tab_aggs
+            label: "Répartition des ventes par gamme de l'année en cours"
+            span: right
+            type: chartform
+            chartType: pie_or_doughnut
+            renderType: doughnut
+            labels: getSalesByGammesLabels
+            attributes:
+                periode: y
+            dataSets:
+                first:
+                    fnc: getSalesByGammesValue

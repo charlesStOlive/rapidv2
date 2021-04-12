@@ -2,7 +2,7 @@
 
 return [
     'dataSource' => [
-        'src' => 'waka/wconfig/config/datasources.yaml',
+        'src' => 'wcli/wconfig/config/datasources.yaml',
     ],
     'workflows' => [
         // '/waka/crm/config/project_w.yaml',
@@ -78,8 +78,8 @@ return [
     'assets' => [ // obligatoire pour pdf et mailer
         'css' => [
             //si il  a du less penser à le mettre dans le registrer du plugin pour le combiner en css
-            'pdf' => ['/waka/wconfig/assets/css/simple_grid/pdf.css' => 'pdf de base'],
-            'email' => ['/waka/wconfig/assets/css/simple_grid/email.css' => 'email de base'],
+            'pdf' => ['/wcli/wconfig/assets/css/simple_grid/pdf.css' => 'pdf de base'],
+            'email' => ['/wcli/wconfig/assets/css/simple_grid/email.css' => 'email de base'],
         ],
     ],
     'colors' => [

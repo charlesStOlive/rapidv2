@@ -2,7 +2,7 @@ import $ from 'jquery/dist/jquery.min';
 window.jQuery = $;
 window.$ = $;
 
-var Flickity = require('flickity');
+//var Flickity = require('flickity');
 
 import { changeMenuOnScroll } from './modules/mobile_behavior.js';
 import { launchAnimeOnScroll, animeClass } from './modules/animations_behavior.js';

@@ -11,6 +11,7 @@ class Client extends Model
     use \October\Rain\Database\Traits\Validation;
     use \Waka\Utils\Classes\Traits\DataSourceHelpers;
     use \Waka\Segator\Classes\Traits\TagTrait;
+    use \Wcli\Wconfig\Functions\Traits\Helpers;
 
     /**
      * @var string The database table used by the model.
@@ -122,6 +123,66 @@ class Client extends Model
     /**
      * GETTERS
      **/
+    public function getSalesByGammes($periode) {
+        if(!$periode) {
+            throw new \SystemException('variable periode est null');
+        }
+        $sales = $this->sales();
+        $sales = $this->filterByPeriode($sales, $periode);
+        if(!$sales) {
+            return null;
+        }
+        $sales =  $sales->select('gamme_id', \Db::raw('COUNT(*) as value'))
+            ->groupBy('gamme_id')->get();
+        $sales = $sales->map(function ($item, $key)  {
+            $mapped = [];
+            if ($item['gamme_id'] != 'autres') {
+                $mapped['labels'] = Gamme::find($item['gamme_id'])->name;
+            }
+            $mapped['value'] = $item['value'];
+            return $mapped;
+        });
+        return $sales;
+
+    }
+    public function getSalesByGammesLabels($attributes) {
+        $periode = $attributes['periode'];
+        $sales =  $this->getSalesByGammes($periode);
+        if(!$sales) {
+            return [];
+        }
+        return $sales->pluck('labels')->toArray();
+    }
+    public function getSalesByGammesValue($attributes) {
+        $periode = $attributes['periode'];
+        $sales =  $this->getSalesByGammes($periode);
+        if(!$sales) {
+            return [];
+        }
+        return $sales->pluck('value')->toArray();
+    }
+    public function getSales($attributes) {
+        $results = $this->aggs()
+            ->where('type', $attributes['type'])
+            ->orderBy('ended_at', 'desc')->take($attributes['take'])->get();
+            return $results->sortBy('ended_at');
+    }
+    public function getSalesLabels($attributes) {
+        $sales = $this->getSales($attributes);
+        $labels = [];
+        foreach ($sales as $key => $result) {
+            array_push($labels, $result->year . '-' . $attributes['type'] . '-' . $result->num);
+        }
+        return $labels;
+    }
+    public function getSalesValue($attributes) {
+        $sales = $this->getSales($attributes);
+        $dataSet = [];
+        foreach ($sales as $key => $result) {
+            array_push($dataSet, $result[$attributes['calcul']]);
+        }
+        return $dataSet;
+    }
 
     /**
      * SCOPES
