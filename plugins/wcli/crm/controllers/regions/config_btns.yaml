@@ -49,6 +49,12 @@ tool_bar:
             lot_mail:
                 config: waka.mailer::btns.lot_mail
                 group: waka.utils::lang.prod.send
+            lot_pdf:
+                config: waka.cloud::btns.lot_pdf
+                group: waka.utils::lang.prod.send
+            lot_word:
+                config: waka.cloud::btns.lot_word
+                group: waka.utils::lang.prod.send
     # partials: #Attention seul les variables modelId et modelClass (class du controller) sont disponible sans les partials.  
     #     testbtns:
     #         url: $/wcli/crm/controllers/projects/_test_index.htm
