@@ -21,6 +21,8 @@ class Clients extends Controller
         'Waka.ImportExport.Behaviors.ExcelExport',
         'Waka.Segator.Behaviors.CalculTags',
         'Waka.Agg.Behaviors.AggCreator',
+        'Waka.Cloud.Behaviors.CloudPdf',
+        'Waka.Cloud.Behaviors.CloudWord',
     ];
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';

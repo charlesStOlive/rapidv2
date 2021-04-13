@@ -65,6 +65,7 @@
         "mexitek/phpcolors": "dev-master",
         "markrogoyski/math-php": "0.*",
         "juanmiguelbesada/mjml-php": "dev-dev-waka",
+        "nao-pon/flysystem-google-drive": "~1.1",
         "zerodahero/laravel-workflow": "^2.0",
         "spatie/laravel-backup": "^6.11"
     },

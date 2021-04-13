@@ -57,12 +57,12 @@ return [
         ],
         'folderModel' => [
             'client' => [
-                'model' => 'Waka\Crm\Models\Client',
+                'model' => 'Wcli\Crm\Models\Client',
                 'column_for_name' => 'name',
                 'folder' => 'Clients',
             ],
             'region' => [
-                'model' => 'Waka\Crm\Models\Region',
+                'model' => 'Wcli\Crm\Models\Region',
                 'folder' => 'Regions',
             ],
         ],
